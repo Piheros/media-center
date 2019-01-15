@@ -1,0 +1,27 @@
+﻿@model WebApplication1.Models.Galerie
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit Librairy - @Html.DisplayFor(model => model.Nom)</h2>
+<p>Edit librairy @Html.DisplayFor(model => model.Nom) in database. </p>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="oye-fab">
+                <div class="oye-fab-btn">
+                    <button type="submit" class="btn btn-success">Edit</button>
+                    <a asp-action="Index" class="btn btn-danger">Return</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

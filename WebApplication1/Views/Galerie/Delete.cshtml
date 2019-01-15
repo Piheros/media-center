@@ -1,0 +1,24 @@
+﻿@model WebApplication1.Models.Galerie
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete Librairy - @Html.DisplayFor(model => model.Nom)</h2>
+<p>Delete librairy @Html.DisplayFor(model => model.Nom) in database. </p>
+
+<h3>Do you want to supress @Html.DisplayFor(model => model.Nom)?</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Delete" method="post"><input type="hidden" asp-for="Id" />
+            <div class="oye-fab">
+                <div class="oye-fab-btn">
+                    <button type="submit" class="btn btn-success">Supress</button>
+                    <a asp-action="Index" class="btn btn-danger">Return</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
