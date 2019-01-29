@@ -1,0 +1,32 @@
+﻿@model WebApplication1.Models.Image
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details Image - @Html.DisplayFor(model => model.Nom)</h2>
+<p>Details of Image @Html.DisplayFor(model => model.Nom) in database.</p>
+<hr />
+
+<div class="container">
+    <div style="text-align:center">
+        @if (Model.Data != null)
+        {
+            var base64 = Convert.ToBase64String(Model.Data);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            <div>
+                <img src="@imgSrc" width="400px" />
+            </div>
+        }
+        else
+        {
+            <br /><span style='color:red'>File not found !</span><br />
+        }
+        <br />
+        <div>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-success">Supprimer</a>
+            <a asp-controller="Tags" asp-action="Index" asp-route-imageid="@Model.Id" class="btn btn-primary">Update Tags</a>
+            <a asp-controller="Galerie" asp-action="Details" asp-route-id="@Model.GalerieId" class="btn btn-danger">Retour</a>
+        </div>
+    </div>
+</div>

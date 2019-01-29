@@ -1,0 +1,34 @@
+﻿@model WebApplication1.Models.Image
+
+@{
+    ViewData["Title"] = "Edit Image";
+}
+
+<h2>Edit Image - @Html.DisplayFor(model => model.Nom)</h2>
+<p>Edit Image @Html.DisplayFor(model => model.Nom) in database.</p>
+<h3>@Html.DisplayFor(model => model.GalerieId)</h3>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="GalerieId" class="control-label">Name of Galerie Id</label>
+                <input asp-for="GalerieId" class="form-control" width="20px" required="required" />
+                <span asp-validation-for="GalerieId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label">Name of Image</label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Update" />
+                <a asp-action="Index" class="btn btn-danger">Return</a>
+            </div>
+        </form>
+    </div>
+</div>
+

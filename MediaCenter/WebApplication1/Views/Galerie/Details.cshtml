@@ -1,0 +1,65 @@
+﻿@model WebApplication1.Models.Galerie
+
+@{
+    ViewData["Title"] = "Details Librairy";
+}
+
+<h2>Details Librairy - @Html.DisplayFor(model => model.Nom)</h2>
+<p>Details librairy @Html.DisplayFor(model => model.Nom) in database. </p>
+<hr />
+
+<div class="container">
+    <form asp-action="Details" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div>
+            @if (!Model.ListImages.Any())
+            {
+                <br /><span style='color:red'>There is no picture in this library !</span><br />
+            }
+            else
+            {
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name Image</th>
+                            <th>Image</th>
+                            <th>Update Image</th>
+                            <th>Supress Image</th>
+                            <th>Details Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Image image in Model.ListImages)
+                        {
+                            <tr>
+                                <td><h4> <a asp-controller="Image" asp-action="Details" asp-route-id="@image.Id">@image.Nom</a></h4></td>
+                                <td>
+                                    @if (image.Data != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(image.Data);
+                                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                        <a asp-controller="Image" asp-action="Details" asp-route-id="@image.Id">
+                                            <img src="@imgSrc" width="150px" />
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <br /><span style='color:red'>File not found !</span><br />
+                                    }
+                                </td>
+                                <td><a asp-controller="Image" asp-action="Edit" asp-route-id="@image.Id" class="btn btn-success">Update</a></td>
+                                <td><a asp-controller="Image" asp-action="Delete" asp-route-id="@image.Id" class="btn btn-danger">Supress</a></td>
+                                <td><a asp-controller="Image" asp-action="Details" asp-route-id="@image.Id" class="btn btn-primary">Details</a></td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </form>
+    <div style="text-align:right">
+        <a asp-controller="Image" asp-action="Create" asp-route-id="@Model.Id" asp-route-nameGalerie="@Model.Nom" class="btn btn-success">Add Image</a>
+        <a asp-action="Index" class="btn btn-danger">Return</a>
+    </div>
+</div>
