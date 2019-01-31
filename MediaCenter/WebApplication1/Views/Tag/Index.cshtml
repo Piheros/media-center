@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MediaCenter.Models.Tag>
+
+@{
+    int imageid = ViewBag.imageid;
+    Image imagemini = ViewBag.imagemini;
+    ViewData["Title"] = "Index Tag";
+}
+
+<h2>Details Tag Image</h2>
+<p>Details Tag of Image in database.</p>
+<hr />
+
+<div style="text-align:center">
+    <input type="hidden" value=@Model.GetEnumerator().MoveNext() />
+    @if (imagemini.Data != null)
+    {
+        var base64 = Convert.ToBase64String(imagemini.Data);
+        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+        <div>
+            <img src="@imgSrc" width="400px" />
+        </div>
+    }
+    else
+    {
+        <br /><span style='color:red'>File not found !</span><br />
+    }
+    <br />
+    <div>
+        @foreach (var item in Model)
+        {
+            @if (imageid == item.ImageId)
+            {
+                <button class="btn alert-info">@Html.DisplayFor(modelItem => item.Nom)</button>
+            }
+        }
+    </div>
+    <hr />
+    <div style="text-align:left">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name Tag</th>
+                    <th>Supress Tag</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @if (imageid == item.ImageId)
+                    {
+                        <tr>
+                            <td><button class="btn alert-info">@Html.DisplayFor(modelItem => item.Nom)</button></td>
+                            <td>
+                                <form asp-controller="Tag" asp-action="Delete" asp-route-id="@item.Id">
+                                    <input type="submit" class="btn btn-danger" value="Suppress" />
+                                    <input type="hidden" value=@Model.GetEnumerator().MoveNext() />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:right">
+        <div>
+            <a asp-action="Create" asp-route-id="@imageid" class="btn btn-success">Create Tag</a>
+            <a asp-controller="Image" asp-action="Details" asp-route-id="@imageid" class="btn btn-danger">Return</a>
+        </div>
+    </div>
+</div>

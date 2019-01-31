@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MediaCenter.Models.Tag>
+
+@{
+    ViewData["Title"] = "Search";
+    var lsImages = ViewBag.lsImages;
+    var searchText = ViewBag.searchText;
+}
+
+
+<h2>Searc Tag : @searchText</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Image i in lsImages)
+        {
+            <tr>
+                @{
+                    var base64 = Convert.ToBase64String(i.Data);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                }
+                <td>
+                    <span style="font-weight:bold">@i.Nom :</span>
+                    <a asp-controller="Image" asp-action="Details" asp-route-id="@i.Id">
+                        <img src="@imgSrc" width="100px" />
+                    </a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <a asp-controller="Galerie" asp-action="Index" class="btn btn-link">Retour</a>
+        </tr>
+    </tbody>
+</table>

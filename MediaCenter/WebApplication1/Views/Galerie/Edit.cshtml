@@ -1,0 +1,32 @@
+﻿@model MediaCenter.Models.Galerie
+
+@{
+    ViewData["Title"] = "Edit Librairy";
+}
+
+<h2>Update Librairy - @Html.DisplayFor(model => model.Nom)</h2>
+<p>Update librairy @Html.DisplayFor(model => model.Nom) in database.</p>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label" required="required">Name of Librairy</label>
+                <input asp-for="Nom" class="form-control" width="20px" required="required" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="oye-fab">
+                    <div class="oye-fab-btn">
+                        <input type="submit" class="btn btn-success" value="Update" />
+                        <a asp-action="Index" class="btn btn-danger">Return</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model MediaCenter.Models.Tag
+
+@{
+    int id = ViewBag.id;
+    ViewData["Title"] = "Create Tag";
+}
+
+<h2>Create Tag Image - @id</h2>
+<p>Create Tag of Image id @id in database.</p>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ImageId" class="control-label" value="@id" />
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label">Name of Tag</label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Create"/>
+                <a asp-action="Index" asp-route-imageid="@id" class="btn btn-danger">Return</a>
+            </div>
+        </form>
+    </div>
+</div>
