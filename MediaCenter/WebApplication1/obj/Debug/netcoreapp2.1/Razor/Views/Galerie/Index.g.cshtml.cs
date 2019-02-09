@@ -91,7 +91,7 @@ using MediaCenter.Models;
             WriteLiteral("            <tr>\r\n                <td> <h4> ");
             EndContext();
             BeginContext(514, 61, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a20c103ef8b04f5ba7828bb2fc31cc65", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3aef7e4326db405ba5e7e7b5a3b525b7", async() => {
                 BeginContext(563, 8, false);
 #line 22 "C:\Users\Pierre\Desktop\MediaCenter\WebApplication1\Views\Galerie\Index.cshtml"
                                                                      Write(item.Nom);
@@ -130,7 +130,7 @@ using MediaCenter.Models;
             WriteLiteral("</h4></td>\r\n                <td> ");
             EndContext();
             BeginContext(608, 79, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3e0563a48bbd441082f66ce7fb51614b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "62dbc5149f674176a965e32e12b842d5", async() => {
                 BeginContext(677, 6, true);
                 WriteLiteral("Update");
                 EndContext();
@@ -166,7 +166,7 @@ using MediaCenter.Models;
             WriteLiteral("</td>\r\n                <td> ");
             EndContext();
             BeginContext(715, 81, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2882bad8bfb24fe1b94c094dec6da595", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "115b3e506fa84e689ed4b801259bef26", async() => {
                 BeginContext(785, 7, true);
                 WriteLiteral("Supress");
                 EndContext();
@@ -202,7 +202,7 @@ using MediaCenter.Models;
             WriteLiteral("</td>\r\n                <td> ");
             EndContext();
             BeginContext(824, 83, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "64b3de18a0844cfa96e5aebd378899c3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cb8ff136aecd4c62a7baa153f21bf753", async() => {
                 BeginContext(896, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -246,7 +246,7 @@ using MediaCenter.Models;
             WriteLiteral("    </tbody>\r\n</table>\r\n<div style=\"text-align:right\">\r\n    ");
             EndContext();
             BeginContext(1004, 85, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "03a6fdd6fbfa42a78a0f0f92b5318399", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9d47d4fea95e4198b6a66852c6369727", async() => {
                 BeginContext(1070, 15, true);
                 WriteLiteral("Create Librairy");
                 EndContext();

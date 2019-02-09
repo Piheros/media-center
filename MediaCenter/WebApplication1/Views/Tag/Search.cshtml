@@ -1,40 +1,53 @@
 ﻿@model IEnumerable<MediaCenter.Models.Tag>
 
 @{
-    ViewData["Title"] = "Search";
-    var lsImages = ViewBag.lsImages;
+    ViewData["Title"] = "Search Tag";
+    var listImages = ViewBag.lsImages;
     var searchText = ViewBag.searchText;
 }
 
+<h2>Search - Tag</h2>
+<p>An ordered list of find tag in different librairy.</p>
+<hr />
 
-<h2>Searc Tag : @searchText</h2>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nom)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Image i in lsImages)
-        {
+@if (searchText != null)
+{
+    <table class="table table-striped">
+        <thead>
             <tr>
-                @{
-                    var base64 = Convert.ToBase64String(i.Data);
-                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                }
-                <td>
-                    <span style="font-weight:bold">@i.Nom :</span>
-                    <a asp-controller="Image" asp-action="Details" asp-route-id="@i.Id">
-                        <img src="@imgSrc" width="100px" />
-                    </a>
-                </td>
+                <th>Name Librairy</th>
+                <th>Image Librairy</th>
             </tr>
-        }
-        <tr>
-            <a asp-controller="Galerie" asp-action="Index" class="btn btn-link">Retour</a>
-        </tr>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (Image img in listImages)
+            {
+                <tr>
+                    <td><h4><a asp-controller="Image" asp-action="Details" asp-route-id="@img.Id">@img.Nom</a></h4></td>
+                    <td>
+                        @if (img.Data != null)
+                        {
+                            var base64 = Convert.ToBase64String(img.Data);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            <a asp-controller="Image" asp-action="Details" asp-route-id="@img.Id">
+                                <img src="@imgSrc" width="100px" />
+                            </a>
+                        }
+                        else
+                        {
+                            <span style='color:red'>File not found !</span>
+                            <br />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <br /><span style='color:red'>Please enter a name Tag !</span><br /><br />
+}
+<div style="text-align:right">
+    <a asp-controller="Galerie" asp-action="Index" class="btn btn-danger">Return</a>
+</div>

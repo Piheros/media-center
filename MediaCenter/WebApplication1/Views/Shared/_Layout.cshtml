@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Media Center</title>
-    <link rel="shortcut icon" href="images/logo.png">
+    <link rel="shortcut icon" href="~/images/logo.png">
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -19,7 +19,7 @@
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -27,21 +27,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Galerie" asp-action="Index" class="navbar-brand">Media Center</a>
-            </div>
-            <div class="navbar-collapse collapse">
+                <a asp-area="" asp-controller="Galerie" asp-action="Index" class="navbar-brand">
+                    <img src="~/images/logo.png" width="25" height="25" class="d-inline-block align-top">
+                </a>
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Galerie" asp-action="Index">Librairy</a></li>
+                    <li><a asp-area="" asp-controller="Galerie" asp-action="Index">Index</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li>
-                        <form asp-controller="Tag" asp-action="Search">
-                            <input id="search" name="RejectText" type="text" class="form-control" autocomplete="off" placeholder="Search Tag" />
+                        <form class="navbar-form navbar-right" asp-area="" asp-controller="Tag" asp-action="Search">
+                            <input id="search" name="RejectText" class="form-control mr-sm-2" type="search" placeholder="Search Tag" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </li>
-                </ul>
             </div>
-        </div>
+            </div>
     </nav>
 
     <partial name="_CookieConsentPartial" />

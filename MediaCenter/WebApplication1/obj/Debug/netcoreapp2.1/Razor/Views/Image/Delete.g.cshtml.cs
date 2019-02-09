@@ -129,12 +129,12 @@ WriteAttributeValue("", 531, imgSrc, 531, 7, false);
             WriteLiteral("        <div>\r\n            <br />\r\n            ");
             EndContext();
             BeginContext(745, 307, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ea8d58bbd2f041d385270906849f0a18", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7955201f3af349a387a81a1a736a4b99", async() => {
                 BeginContext(771, 18, true);
                 WriteLiteral("\r\n                ");
                 EndContext();
                 BeginContext(789, 36, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "5dba633f82484395ba4fbf487fc70925", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "e076271ddb55412e9d10567bec22c550", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -159,7 +159,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 WriteLiteral("\r\n                <input type=\"submit\" value=\"Supress\" class=\"btn btn-success\" />\r\n                ");
                 EndContext();
                 BeginContext(924, 107, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ac76b022d6934808a6d3e129bf8101a9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9a2e53dfede94b339dcefc3896d94994", async() => {
                     BeginContext(1021, 6, true);
                     WriteLiteral("Return");
                     EndContext();

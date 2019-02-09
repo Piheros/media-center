@@ -18,38 +18,34 @@ namespace MediaCenter.Controllers
             _context = context;
         }
 
-        // GET: Tags
+        /*
+         * INDEX
+         */
         public async Task<IActionResult> Index(int? imageid)
         {
             var ListAllImages = await _context.Image.ToListAsync();
-            var ImageMini = new Image();
+            var Image = new Image();
             foreach (Image i in ListAllImages)
             {
                 if (i.Id == imageid)
                 {
-                    ImageMini = i;
+                    Image = i;
                 }
             }
-            ViewBag.imagemini = ImageMini;
+            ViewBag.imagemini = Image;
             ViewBag.imageid = imageid;
             return View(await _context.Tag.ToListAsync());
         }
 
-        // GET: Tags/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            var tag = await _context.Tag.SingleOrDefaultAsync(m => m.Id == id);
-            return View(tag);
-        }
-
-        // GET: Tags/Create
+        /*
+         * CREATE
+         */
         public IActionResult Create(int? id)
         {
             ViewBag.id = id;
             return View();
         }
 
-        // POST: Tags/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ImageId, Nom, Size")] Tag tag)
@@ -63,14 +59,43 @@ namespace MediaCenter.Controllers
             return View(tag);
         }
 
-        // GET: Tags/Edit/5
+        /*
+         * DELETE
+         */
+        public async Task<IActionResult> Delete(int? id)
+        {
+            var tag = await _context.Tag.SingleOrDefaultAsync(m => m.Id == id);
+            return View(tag);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id, int? imageid)
+        {
+            var tag = await _context.Tag.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Tag.Remove(tag);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Tag", new { imageid = tag.ImageId });
+        }
+
+        /*
+         * DETAILS
+         */
+        public async Task<IActionResult> Details(int? id)
+        {
+            var tag = await _context.Tag.SingleOrDefaultAsync(m => m.Id == id);
+            return View(tag);
+        }
+
+        /*
+         * EDIT
+         */
         public async Task<IActionResult> Edit(int? id)
         {
             var tag = await _context.Tag.SingleOrDefaultAsync(m => m.Id == id);
             return View(tag);
         }
 
-        // POST: Tags/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id, ImageId, Nom, Size")] Tag tag)
@@ -84,50 +109,33 @@ namespace MediaCenter.Controllers
             return View(tag);
         }
 
-        // GET: Tags/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            var tag = await _context.Tag.SingleOrDefaultAsync(m => m.Id == id);
-            return View(tag);
-        }
-
-        // POST: Tags/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id, int? imageid)
-        {
-            var tag = await _context.Tag.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Tag.Remove(tag);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Tag", new { imageid = tag.ImageId });
-        }
-
+        /*
+         * SEARCH
+         */
         public async Task<IActionResult> Search(String RejectText)
         {
             var ListAllImages = await _context.Image.ToListAsync();
             var ListTags = await _context.Tag.ToListAsync();
             List<Image> ListImages = new List<Image>();
 
-            foreach (Image i in ListAllImages)
+            foreach (Image img in ListAllImages)
             {
-                foreach (Tag t in i.ListTag)
+                foreach (Tag tag in img.ListTag)
                 {
                     if (!(RejectText == null))
                     {
-                        if (!ListImages.Contains(i) && !RejectText.Equals(""))
+                        if (!ListImages.Contains(img) && !RejectText.Equals(""))
                         {
-                            if (t.Nom.ToLower().Contains(RejectText.ToLower()))
+                            if (tag.Nom.ToLower().Contains(RejectText.ToLower()))
                             {
-                                ListImages.Add(i);
+                                ListImages.Add(img);
                             }
                         }
                     }
                 }
             }
-
             ViewBag.searchText = RejectText;
             ViewBag.lsImages = ListImages;
-
             return View();
         }
     }
